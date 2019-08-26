@@ -1,0 +1,32 @@
+.tickets-sort-settings-btn {
+  background-color: #fff;
+  border: 1px solid #dfe5ec;
+  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  font-weight: 600;
+  cursor: pointer;
+  line-height: 20px;
+  transition: border .3s,background .3s,color .3s;
+  padding: 15px 60px;
+  margin-bottom: 20px;
+}
+
+.btn-left {
+  border-top-left-radius:10px;
+  border-bottom-left-radius:10px;
+}
+
+.btn-right {
+  border-top-right-radius:10px;
+  border-bottom-right-radius:10px;
+}
+
+.active {
+  background: #2196f3;
+  color: #fff;
+  border: 1px solid #2196f3;
+  -webkit-transition: border .3s,background .3s,color .3s;
+  transition: border .3s,background .3s,color .3s;
+}

@@ -1,0 +1,11 @@
+.ticket-list {
+  margin-left: 20px;
+}
+
+.logo-svg {
+  display: block;
+  width: 65px;
+  height: 75px;
+  background: url('../../logo.svg') center 80px;
+  margin: 50px auto 50px auto;
+}

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import TicketsList from "../components/tickets-list";
-import withAviasalesService from "../components/hoc";
-import ErrorIndicator from "../components/error-indicator";
-import Spinner from "../components/spinner/";
+import TicketsList from "../../components/tickets-list";
+import withAviasalesService from "../../components/hoc";
+import ErrorIndicator from "../../components/error-indicator";
+import Spinner from "../../components/spinner";
 import { connect } from "react-redux";
-import { ticketsRequest, ticketsLoaded, ticketsError } from "../actions";
+import { ticketsRequest, ticketsLoaded, ticketsError } from "../../actions";
 
 class TicketsListContainer extends Component {
   componentDidMount() {

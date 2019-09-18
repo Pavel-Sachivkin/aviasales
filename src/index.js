@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import App from "./components/app";
+import App from "./containers/app";
 import ErrorBoundry from "./components/error-boundry";
 import AviasalesService from "./services/aviasales-service";
 import { AviasalesServiceProvider } from "./components/aviasales-service-context";

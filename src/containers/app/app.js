@@ -1,7 +1,7 @@
 import React from "react";
 import './app.css';
-import TicketsListContainer from "../../containers/tickets-list-container";
-import TicketsListFilter from "../tickets-list-filter";
+import TicketsListContainer from "../tickets-list-container";
+import TicketsListFilter from "../../components/tickets-list-filter";
 
 const App = () => {
   return (

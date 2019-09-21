@@ -4,7 +4,8 @@ import withAviasalesService from "../../components/hoc";
 import ErrorIndicator from "../../components/error-indicator";
 import Spinner from "../../components/spinner";
 import { connect } from "react-redux";
-import { ticketsRequest, ticketsLoaded, ticketsError } from "../../actions";
+import { ticketsRequest, ticketsLoaded, ticketsError } from "../../actions/tickets";
+import { setStopsFilter} from "../../actions/filter";
 
 class TicketsListContainer extends Component {
   componentDidMount() {
@@ -26,6 +27,8 @@ class TicketsListContainer extends Component {
         ticketsError(error.message);
       });
   }
+
+
 
 
   render() {
@@ -65,6 +68,15 @@ function sortAndFilter(tickets, stopsValue, sortValue) {
         return prev + curr.duration;
       }, 0);
     };
+  }
+
+  for (let i = 0; i < tickets.length; i++ ) {
+    let c = tickets[i];
+
+      for (let j = 0; j < c.length; j++) {
+        console.log(c);
+      }
+
   }
 
   newTickets = stopsValue.all

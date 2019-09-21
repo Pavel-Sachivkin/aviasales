@@ -37,7 +37,7 @@ const TicketsListFilter = ({stopsValue, setStopsValue}) => {
             onChange={() => setStopsValue("1")}
             checked={stopsValue.one}
           />
-          <label htmlFor="check-1"> Одна пересадка</label>
+          <label htmlFor="check-1"> 1 пересадка</label>
         </li>
         <li className="tickets-filter__list-item">
           <input
@@ -46,7 +46,7 @@ const TicketsListFilter = ({stopsValue, setStopsValue}) => {
             onChange={() => setStopsValue("2")}
             checked={stopsValue.two}
           />
-          <label htmlFor="check-2"> Две пересадки</label>
+          <label htmlFor="check-2"> 2 пересадки</label>
         </li>
         <li className="tickets-filter__list-item">
           <input
@@ -55,7 +55,7 @@ const TicketsListFilter = ({stopsValue, setStopsValue}) => {
             onChange={() => setStopsValue("3")}
             checked={stopsValue.three}
           />
-          <label htmlFor="check-3"> Три пересадки</label>
+          <label htmlFor="check-3"> 3 пересадки</label>
         </li>
       </ul>
     </div>

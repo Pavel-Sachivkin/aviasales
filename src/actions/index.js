@@ -1,6 +1,6 @@
 import {ticketsRequest, ticketsLoaded,ticketsError,} from "./tickets";
-import {setStopsValue,setSortValue} from "./sort";
-import {setStopsFilter} from "./filter";
+import {setSortValue} from "./sort";
+import { setStopsFilter, setStopsValue} from "./filter";
 
 
 export {

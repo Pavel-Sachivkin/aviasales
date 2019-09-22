@@ -116,7 +116,8 @@ const mapStateToProps = ({
 const mapDispatchToProps = {
   ticketsLoaded,
   ticketsRequest,
-  ticketsError
+  ticketsError,
+  setStopsFilter
 };
 
 export default withAviasalesService()(

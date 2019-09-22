@@ -19,7 +19,14 @@ export const loadTickets = () => async dispatch => {
 	dispatch(ticketsLoaded(tickets.tickets));
 	dispatch(setStops(stopsArr));
 	dispatch(loading(false));
-	
+};
+
+
+export const setSortType = (sortType) => {
+	return {
+		type: 'SET_SORT_TYPE',
+		payload: { sortType }
+	}
 };
 
 export const setStops = (stops) => {

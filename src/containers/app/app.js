@@ -1,6 +1,6 @@
 import React from "react";
 import './app.css';
-import { loadTickets } from '../../actions/tickets';
+import { loadTickets, setSortType } from '../../actions/tickets';
 import { connect } from 'react-redux';
 import Ticket from '../../components/tickets-list-item';
 
@@ -10,7 +10,7 @@ class App extends React.Component {
 	constructor(props) {
 		super(props);
 		if (this.props.onMount) {
-			this.props.onMount()
+			this.props.onMount();
 		}
 	}
 	
@@ -33,13 +33,26 @@ class App extends React.Component {
 					))
 				}
 				<h2 onClick={() => {
-					console.log('sort Самый дешевый');
+					if (this.props.onSort) {
+						this.props.onSort('cheap');
+					}
 				}}>Самый дешевый</h2>
 				<h2 onClick={() => {
-					console.log('sort Самый быстрый');
-				}}>Самый быстрый</h2>
+					if (this.props.onSort) {
+						this.props.onSort('expensive');
+					}
+				}}>Самый дорогой</h2>
 				{
-					this.props.tickets.map(ticket => (<Ticket ticket={ticket} />))
+					this.props.sortType
+				}
+				{
+					this.props.tickets.slice(0).sort((a, b) => {
+						if (this.props.sortType === 'cheap') {
+							return a.price - b.price
+						}
+						
+						else return b.price - a.price
+					}).map(ticket => (<Ticket ticket={ticket} />))
 				}
 			</main>
 		)
@@ -50,15 +63,16 @@ class App extends React.Component {
 const mapStateToProps = (state) => ({
 	isTicketsLoading: state.loading,
 	tickets: state.tickets,
-	stopsCount: state.stops
+	stopsCount: state.stops,
+	sortType: state.sortType
 });
 
 const mapDispatchToProps = (dispatch) => ({
 	onMount: () => {
 		dispatch(loadTickets())
 	},
-	onFilter: () => {
-	
+	onSort: (sortType) => {
+		dispatch(setSortType(sortType));
 	}
 });
 

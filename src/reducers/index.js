@@ -11,7 +11,8 @@ const initialState = {
 	},
 	sortValue: "sortByPrice",
 	loading: false,
-	stops: []
+	stops: [],
+	sortType: 'cleap'
 };
 
 const findFalseValue = obj => {
@@ -46,6 +47,12 @@ const setStopsValue = (state, filter) => {
 
 const reducer = (state = initialState, action) => {
 	switch (action.type) {
+		case "SET_SORT_TYPE":
+			return {
+				...state,
+				sortType: action.payload.sortType,
+				
+			};
 		case "SET_STOPS":
 			return {
 				...state,

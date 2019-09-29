@@ -2,47 +2,10 @@ const initialState = {
 	tickets: [],
 	isTicketsLoaded: false,
 	error: null,
-	stopsValue: {
-		all: true,
-		0: false,
-		1: false,
-		2: false,
-		3: false
-	},
-	sortValue: "sortByPrice",
 	loading: false,
 	stops: [],
-	sortType: 'cleap'
-};
-
-const findFalseValue = obj => {
-	let value = false;
-	for (var key in obj) {
-		if ( obj[key] === true ) {
-			value = true;
-		}
-	}
-	return value;
-};
-
-const setStopsValue = (state, filter) => {
-	let newState = {
-		...state,
-		stopsValue: {
-			...state.stopsValue,
-			[filter]: !state.stopsValue[filter]
-		}
-	};
-	
-	return findFalseValue(newState.stopsValue) === false
-		? (newState = {
-			...state,
-			stopsValue: {
-				...newState.stopsValue,
-				all: true
-			}
-		})
-		: newState;
+	sortType: 'cleap',
+	updateFilters: false
 };
 
 const reducer = (state = initialState, action) => {
@@ -59,6 +22,15 @@ const reducer = (state = initialState, action) => {
 				stops: action.payload.stops,
 				
 			};
+
+		case "UPDATE_FILTERS" :
+			return {
+				...state,
+				updateFilters: action.payload.updateFilters,
+
+			};
+
+			
 		case "FETCH_TICKETS_LOADING":
 			return {
 				...state,
@@ -83,13 +55,7 @@ const reducer = (state = initialState, action) => {
 				isTicketsLoaded: false,
 				error: action.payload
 			}
-		case "SET_STOPS_VALUE":
-			return setStopsValue(state, action.payload);
-		case "SET_SORT_VALUE":
-			return {
-				...state,
-				sortValue: action.payload
-			};
+
 		default:
 			return state;
 	}

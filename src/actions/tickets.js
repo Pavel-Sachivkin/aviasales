@@ -36,6 +36,13 @@ export const setStops = (stops) => {
 	}
 };
 
+export const updateFilters = (updateFilters) => {
+	return {
+		type: 'UPDATE_FILTERS',
+		payload: { updateFilters }
+	}
+};
+
 export const loading = (isLoading) => {
 	return {
 		type: 'FETCH_TICKETS_LOADING',

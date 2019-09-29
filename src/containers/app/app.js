@@ -25,8 +25,8 @@ class App extends React.Component {
               className="checkbox"
               onClick={() => {
                 if (this.props.onFilter) {
-									console.log("disable ", stop);
-									this.props.onFilter("checked");
+                  console.log("disable ", stop);
+                  // this.props.onFilter(this);
                 }
               }}
             >
@@ -60,6 +60,13 @@ class App extends React.Component {
           {this.props.sortType}
           {this.props.tickets
             .slice(0)
+            .filter(ticket => {
+							console.log(ticket);
+							// tickets.segments;
+							return true;
+							// this.props.stops
+
+						})
             .sort((a, b) => {
               if (this.props.sortType === "cheap") {
                 return a.price - b.price;
@@ -67,14 +74,16 @@ class App extends React.Component {
             })
             .map(ticket => (
               <Ticket ticket={ticket} />
-						))}
-					
-					{this.props.onFilter}
+            ))}
+
+          {/* {this.props.onFilter}
 					{this.props.tickets.slice(0).sort((a, b) => {
 						if (this.props.onFilter.checked === true) {
               return a.stops - b.stops;
             }
-					})}
+					})} */}
+
+          {}
         </div>
       </main>
     );
@@ -86,7 +95,8 @@ const mapStateToProps = (state) => ({
 	isTicketsLoading: state.loading,
 	tickets: state.tickets,
 	stopsCount: state.stops,
-	sortType: state.sortType
+	sortType: state.sortType,
+	stops: state.stops
 });
 
 const mapDispatchToProps = (dispatch) => ({

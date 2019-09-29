@@ -3,7 +3,7 @@ const initialState = {
 	isTicketsLoaded: false,
 	error: null,
 	loading: false,
-	stops: [],
+	stops: [0,1,3],
 	sortType: 'cleap',
 	updateFilters: false
 };
@@ -30,7 +30,7 @@ const reducer = (state = initialState, action) => {
 
 			};
 
-			
+
 		case "FETCH_TICKETS_LOADING":
 			return {
 				...state,

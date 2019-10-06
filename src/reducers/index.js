@@ -3,7 +3,7 @@ const initialState = {
 	isTicketsLoaded: false,
 	error: null,
 	loading: false,
-	stops: [0,1,3],
+	stops: [],
 	sortType: 'cleap',
 	updateFilters: false
 };

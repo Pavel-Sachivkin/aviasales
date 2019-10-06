@@ -5,20 +5,24 @@ export const loadTickets = () => async dispatch => {
 	const key = await keyRequest.json();
 	const ticketsResponse = await fetch(`https://front-test.beta.aviasales.ru/tickets?searchId=${key.searchId}`);
 	const tickets = await ticketsResponse.json();
-	const stops = new Set();
 	
+	const stops = new Set();
+
+
 	tickets.tickets.forEach((ticket) => {
 		ticket.segments.forEach(segment => {
 			stops.add(segment.stops.length);
 			
 		})
 	});
+
 	
 	const stopsArr = (Array.from(stops).sort((a, b) => a - b));
 	
 	dispatch(ticketsLoaded(tickets.tickets));
 	dispatch(setStops(stopsArr));
 	dispatch(loading(false));
+
 };
 
 

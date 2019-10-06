@@ -5,6 +5,10 @@ import { connect } from 'react-redux';
 import Ticket from '../../components/tickets-list-item';
 
 
+
+
+
+
 class App extends React.Component {
 	
 	constructor(props) {
@@ -26,6 +30,9 @@ class App extends React.Component {
               onClick={() => {
                 if (this.props.onFilter) {
                   console.log("disable ", stop);
+                  this.props.onFilter(stop);
+
+
                   // this.props.onFilter(this);
                 }
               }}
@@ -61,11 +68,32 @@ class App extends React.Component {
           {this.props.tickets
             .slice(0)
             .filter(ticket => {
-							console.log(ticket);
-							// tickets.segments;
-							return true;
-							// this.props.stops
+              // console.log(ticket.segments);
 
+              ticket.segments.forEach(segments => {
+                // пробегаемся по ticket.segments
+                let allStopsInTicket;
+                // объявили переменную в которую мы будем добавлять все точки остановок
+                allStopsInTicket = segments.stops;
+                // добавили в неё данные из ticket.segments.stops
+                const allStopsInTicketArr = (Array.from(segments.stops));
+                // сделали её массивом
+
+                if (this.props.onFilter === allStopsInTicketArr) {
+
+                  // нужно написать условие: если выбрано (n) пересадок то вы возвращаем билеты со значением ticket.segments.stops(n)
+
+                  return console.log(123);
+                }
+
+                console.log(segments.stops);
+                // console.log(allStopsInTicketArr);
+              });
+
+              
+
+							return true;
+              
 						})
             .sort((a, b) => {
               if (this.props.sortType === "cheap") {
@@ -83,7 +111,9 @@ class App extends React.Component {
             }
 					})} */}
 
-          {}
+          {
+
+          }
         </div>
       </main>
     );
@@ -106,8 +136,8 @@ const mapDispatchToProps = (dispatch) => ({
 	onSort: (sortType) => {
 		dispatch(setSortType(sortType));
 	},
-	onFilter: (stopsCount) => {
-		dispatch(setStops(stopsCount));
+  onFilter: (stopsCount) => {
+    dispatch(setStops(stopsCount));
 	}
 });
 

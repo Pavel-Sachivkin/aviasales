@@ -30,7 +30,7 @@ class App extends React.Component {
               onClick={() => {
                 if (this.props.onFilter) {
                   console.log("disable ", stop);
-                  this.props.onFilter(stop);
+
 
 
                   // this.props.onFilter(this);
@@ -69,31 +69,20 @@ class App extends React.Component {
             .slice(0)
             .filter(ticket => {
               // console.log(ticket.segments);
+              
 
-              ticket.segments.forEach(segments => {
-                // пробегаемся по ticket.segments
-                let allStopsInTicket;
-                // объявили переменную в которую мы будем добавлять все точки остановок
-                allStopsInTicket = segments.stops;
-                // добавили в неё данные из ticket.segments.stops
-                const allStopsInTicketArr = (Array.from(segments.stops));
-                // сделали её массивом
+              for (let segments of ticket.segments) {
+                let corentStopsCount = segments.stops.length;
+                for (let stop of this.props.stops) {
 
-                if (this.props.onFilter === allStopsInTicketArr) {
+                  if (stop === corentStopsCount) {
+                    return true;
+                  } else {
+                    return false;
+                  }
 
-                  // нужно написать условие: если выбрано (n) пересадок то вы возвращаем билеты со значением ticket.segments.stops(n)
-
-                  return console.log(123);
                 }
-
-                console.log(segments.stops);
-                // console.log(allStopsInTicketArr);
-              });
-
-              
-
-							return true;
-              
+              }
 						})
             .sort((a, b) => {
               if (this.props.sortType === "cheap") {

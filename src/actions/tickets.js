@@ -20,7 +20,7 @@ export const loadTickets = () => async dispatch => {
 	const stopsArr = (Array.from(stops).sort((a, b) => a - b));
 	
 	dispatch(ticketsLoaded(tickets.tickets));
-	dispatch(setStops(stopsArr));
+	dispatch(setStops([1]));
 	dispatch(loading(false));
 
 };

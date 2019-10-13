@@ -68,26 +68,18 @@ class App extends React.Component {
           {this.props.tickets
             .slice(0)
             .filter(ticket => {
-              // console.log(ticket.segments);
-              
-              let result = false;
+
               for (let segments of ticket.segments) {
                 let corentStopsCount = segments.stops.length;
                 // цикл который мы написали, тоже самое есть у массива this.props.stops.includes
-                for (let stop of this.props.stops) {
-                  result = stop === corentStopsCount;
 
-                }
-
-                if (result === false) {
+                if (!this.props.stops.includes(corentStopsCount)) {
                   return false;
                 }
 
               }
-              return result;
-              // 
-              
-						})
+              return true;
+            })
             .sort((a, b) => {
               if (this.props.sortType === "cheap") {
                 return a.price - b.price;

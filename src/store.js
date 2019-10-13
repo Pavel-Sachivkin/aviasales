@@ -4,5 +4,5 @@ import reducer from './reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 export default (initialState) => {
-	return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
+  return createStore(reducer, initialState, composeWithDevTools(applyMiddleware(thunk)))
 };
